@@ -1,6 +1,6 @@
 const WebSocket = require("ws");
-const Room = require("./room");
-const Game = require("./Game");
+const Room = require("../room");
+const Game = require("../Game");
 const wss = new WebSocket.Server({ port: 8080 });
 
 function generateRoomId() {

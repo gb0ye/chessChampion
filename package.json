@@ -3,5 +3,9 @@
     "chess.js": "^1.0.0-beta.6",
     "nodemon": "^3.0.1",
     "ws": "^8.14.2"
+  },
+  "scripts": {
+    "start": "node ./server/webspcket/websocket.js",
+    "dev": "nodemon ./server/websocket/websocket.js"
   }
 }
