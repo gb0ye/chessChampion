@@ -7,7 +7,7 @@
     "ws": "^8.14.2"
   },
   "scripts": {
-    "start": "node ./server/websocket/websocket.js",
+    "start": "node ./server/server.js",
     "dev": "nodemon"
   },
 
