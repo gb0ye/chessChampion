@@ -17,5 +17,7 @@ app.get("/home", (req, res) => {
 const port = process.env.PORT || 3000;
 
 server.listen(port, () => {
-   console.log("server is running on port localhost:3000");
+   const address = server.address();
+   const hostname = address.address;
+   console.log(`Server is running on http://${hostname}:${address.port}`);
 });

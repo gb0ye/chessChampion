@@ -9,5 +9,9 @@
   "scripts": {
     "start": "node ./server/websocket/websocket.js",
     "dev": "nodemon"
+  },
+
+  "engines": {
+    "node": "18.16.0"
   }
 }
