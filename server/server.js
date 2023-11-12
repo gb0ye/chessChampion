@@ -9,7 +9,7 @@ socketServer.attach(server);
 
 app.use(express.static(path.join(__dirname, '../static')));
 
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
    const homePath = path.join(__dirname, "../static/index.html");
    res.sendFile(homePath);
 });
