@@ -2,7 +2,7 @@ import { Chess } from "../dist/esm/chess.js";
 const createRoomBtn = document.getElementById("createRoom");
 const joinRoomBtn = document.getElementById("joinRoom");
 const roomForm = document.querySelector("#roomForm");
-const socket = new WebSocket("https://chess-n3ze.onrender.com/we");
+const socket = new WebSocket("https://chess-n3ze.onrender.com:8080");
 
 let board;
 let game;
