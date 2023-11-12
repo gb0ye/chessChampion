@@ -1,0 +1,73 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-color: #f5f5f5;
+   height: 100vh;
+   width: 100vw;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.container {
+   width: 700px;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+}
+
+.container .btns {
+   display: flex;
+   flex-direction: row;
+   gap: 5px;
+   margin-bottom: 20px;
+}
+
+.container .btn {
+   width: 100px;
+   height: 40px;
+   border: transparent;
+   border-radius: 7px;
+   background-color: #8585e7;
+   color: #fff;
+   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container .btn:active {
+   scale: 0.97;
+}
+
+.container .btns #roomForm input {
+   height: 40px;
+   width: 0px;
+   border-radius: 7px;
+   outline: none;
+   border: none;
+   border:2px solid #8585e7;
+   transition: 0.3s all ease;
+   visibility: hidden;
+}
+
+.container .btns #roomForm button:hover {
+   cursor: pointer;
+}
+
+.container .btns #roomForm button:hover ~ input {
+   width: 150px;
+   padding: 5px;
+}
+
+.container .btns #roomForm input:hover,
+.container .btns #roomForm input:active,
+.container .btns #roomForm input:focus,
+.container .btns #roomForm button:hover ~ input {
+   width: 150px;
+   padding: 5px;
+   border: 2px solid #8585e7;
+   visibility: visible;
+}
+
