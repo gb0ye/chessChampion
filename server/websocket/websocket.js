@@ -1,7 +1,8 @@
 const WebSocket = require("ws");
 const Room = require("../room");
 const Game = require("../Game");
-const wss = new WebSocket.Server({ port: 8080 });
+const port = process.env.PORT || 8080;
+const wss = new WebSocket.Server({ port });
 
 function generateRoomId() {
    return Math.random().toString(36).substring(2, 7).toUpperCase();
