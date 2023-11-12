@@ -5,11 +5,12 @@ class Room {
       this.isFull = false;
    }
 
-   addPlayer(ws, playerId) {
-      this.players.push({ws, playerId});
+   addPlayer(socket, side) {
+      this.players.push({socket, side});
       if (this.players.length === 2) {
          this.isFull = true;
       }
+      socket.join(this.roomId)
    }
 
    removePlayer(player) {
