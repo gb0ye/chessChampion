@@ -2,6 +2,9 @@ const express = require("express");
 const path = require("path");
 const { createServer } = require("node:http");
 const socketServer = require("./websocket/socket");
+const { bot } = require("./Telegram/bot");
+
+bot.launch({dropPendingUpdates:true});
 
 const app = express();
 const server = createServer(app);

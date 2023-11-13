@@ -1,16 +1,17 @@
 {
   "dependencies": {
     "chess.js": "^1.0.0-beta.6",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "nodemon": "^3.0.1",
     "socket.io": "^4.7.2",
+    "telegraf": "^4.15.0",
     "ws": "^8.14.2"
   },
   "scripts": {
     "start": "node ./server/server.js",
     "dev": "nodemon"
   },
-
   "engines": {
     "node": "18.16.0"
   }
