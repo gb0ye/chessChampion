@@ -2,9 +2,9 @@ const express = require("express");
 const path = require("path");
 const { createServer } = require("node:http");
 const socketServer = require("./websocket/socket");
-const { bot } = require("./Telegram/bot");
+const { chessChampion } = require("./Telegram/ChessChampion");
+const GameServer = require("./Telegram/gameSever");
 
-bot.launch({dropPendingUpdates:true});
 
 const app = express();
 const server = createServer(app);
@@ -19,8 +19,13 @@ app.get("/home", (req, res) => {
 
 const port = process.env.PORT || 3000;
 
+const gameServer = new GameServer(socketServer)
+const bot = new chessChampion(gameServer);
+
 server.listen(port, () => {
    const address = server.address();
    const hostname = address.address;
    console.log(`Server is running on http://${hostname}:${address.port}`);
 });
+
+bot.lanuch();

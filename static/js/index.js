@@ -183,6 +183,10 @@ roomForm.addEventListener("submit", function (event) {
    const roomCode = roomCodeInput.value;
    roomCodeInput.value = "";
 
-
    socket.emit("joinRoom", roomCode);
 });
+
+const tgInitData = Telegram.WebApp.initData;
+if (tgInitData) {
+   socket.emit("tgInitData", { tgInitData });
+}
