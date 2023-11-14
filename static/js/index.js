@@ -203,7 +203,7 @@ const dummyTgInitData = {
 const tgInitData = Telegram.WebApp.initDataUnsafe;
 
 if (tgInitData && Object.keys(tgInitData).length !== 0) {
-   socket.emit("tgInitDataUnsafe", { tgInitData });
+   socket.emit("tgInitDataUnsafe", { ...tgInitData });
    console.log(`tg data was found, sent emit`)
    console.log(Object.keys(tgInitData).length)
 } else {
