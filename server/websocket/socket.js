@@ -46,6 +46,33 @@ io.on("connection", (socket) => {
             }
          });
 
+         socket.on("tgInitDataUnsafe", (data) => {
+            console.log("woow")
+            const roomId = data["start_param"];
+            if (roomId) {
+               const room = activeRooms.find((r) => r.roomId === roomId);
+               if (room && !room.isFull) {
+                  const side = "black";
+
+                  room.addPlayer(socket, side);
+                  room.players.forEach((player) => {
+                     player.socket.emit("roomJoined", {
+                        roomId,
+                        side: player.side,
+                     });
+                  });
+               } else {
+                  socket.emit("roomFull", {
+                     msg: "Room is full. Cannot join.",
+                  });
+               }
+            }
+         });
+
+         socket.on("disconnect", () => {
+            console.log("user disconnected");
+         });
+
          // game.handleMove(ws, data.move, data.playerId, data.roomId);
       } else {
          console.log("Room Not Found");

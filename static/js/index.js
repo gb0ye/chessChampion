@@ -186,7 +186,27 @@ roomForm.addEventListener("submit", function (event) {
    socket.emit("joinRoom", roomCode);
 });
 
+const dummyTgInitData = {
+   auth_date: "1699973669",
+   chat_instance: "4630571020885558203",
+   chat_type: "private",
+   hash: "d4f5022e468cfb36ce67a37129153d84caeb9e69ab5581e70eebfbc5b9ce23e0",
+   start_param: "75ZTI",
+   user: {
+      id: 1173903586,
+      first_name: "Daniel ◉⁠‿⁠◉",
+      last_name: "",
+      username: "gb0ye",
+   },
+};
+
 const tgInitData = Telegram.WebApp.initDataUnsafe;
-if (tgInitData) {
+
+if (tgInitData && Object.keys(tgInitData).length !== 0) {
    socket.emit("tgInitDataUnsafe", { tgInitData });
+   console.log(`tg data was found, sent emit`)
+   console.log(Object.keys(tgInitData).length)
+} else {
+   socket.emit("tgInitDataUnsafe", { ...dummyTgInitData });
+   console.log(`tg data was not found, supposed sent emit`)
 }

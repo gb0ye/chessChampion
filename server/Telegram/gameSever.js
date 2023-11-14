@@ -29,6 +29,7 @@ class GameServer {
                      side: player.side,
                   });
                });
+               console.log(`${side} just joined the room`);
             } else {
                socket.emit("roomFull", { msg: "Room is full. Cannot join." });
             }
@@ -56,10 +57,20 @@ class GameServer {
          });
 
          socket.on("tgInitDataUnsafe", (data) => {
-            const roomId = data["start_param"]
-            if(roomId){
+            console.log("server recieved tg data");
+            const roomId = data["start_param"];
+
+            if (roomId) {
                const room = this.rooms.find((r) => r.roomId === roomId);
-               room.addPlayerToRoom({room})
+               if (room) {
+                  console.log("room was found");
+                  this.addPlayerToRoom(socket, { room });
+               } else {
+                  console.log("room was not found");
+                  const newRoom = new Room(this.io, roomId);
+                  this.rooms.push(newRoom);
+                  this.addPlayerToRoom(socket, { room: newRoom });
+               }
             }
          });
 
@@ -75,9 +86,11 @@ class GameServer {
       return room;
    };
 
-   addPlayerToRoom = (data) => {
-      const roomId = data.roomId;
+   addPlayerToRoom = (socket, data) => {
+      // console.log(data.newRoom)
+      const roomId = data.room.roomId;
       const room = this.rooms.find((r) => {
+         // console.log(r.roomId, roomId);
          if (r.roomId === roomId) return r;
       });
       if (room) {
