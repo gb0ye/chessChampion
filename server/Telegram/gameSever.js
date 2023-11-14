@@ -55,6 +55,14 @@ class GameServer {
             }
          });
 
+         socket.on("tgInitDataUnsafe", (data) => {
+            const roomId = data["start_param"]
+            if(roomId){
+               const room = this.rooms.find((r) => r.roomId === roomId);
+               room.addPlayerToRoom({room})
+            }
+         });
+
          socket.on("disconnect", () => {
             console.log("user disconnected");
          });

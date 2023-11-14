@@ -186,7 +186,7 @@ roomForm.addEventListener("submit", function (event) {
    socket.emit("joinRoom", roomCode);
 });
 
-const tgInitData = Telegram.WebApp.initData;
+const tgInitData = Telegram.WebApp.initDataUnsafe;
 if (tgInitData) {
-   socket.emit("tgInitData", { tgInitData });
+   socket.emit("tgInitDataUnsafe", { tgInitData });
 }
